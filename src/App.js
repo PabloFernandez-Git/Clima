@@ -1,9 +1,28 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header'
 import Formulario from './components/Formulario'
 
 
 function App() {
+
+  // state
+  const [busqueda, guardarBusqueda] = useState({
+    ciudad: '',
+    pais: ''
+  });
+
+  const [consultar, guardarConsultar] = useState(false);
+
+  // destructurar
+  const {ciudad, pais} = busqueda;
+
+  useEffect( () => {
+    const consultarAPI = async () => {
+
+    }
+    consultarAPI();
+  }, [consultar]);
+
   return (
     <Fragment>
       <Header 
@@ -15,7 +34,9 @@ function App() {
           <div className="row">
             <div className="col m6 s12">
               <Formulario 
-                
+                busqueda={busqueda}
+                guardarBusqueda={guardarBusqueda}
+                guardarConsultar={guardarConsultar}
               />
             </div>
             <div className="col m6 s12">
